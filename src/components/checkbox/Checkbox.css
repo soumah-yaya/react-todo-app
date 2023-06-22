@@ -1,0 +1,77 @@
+.checkbox__container {
+    display: inline-block;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    
+    user-select: none;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+/* hide old input */
+.checkbox__input {
+    position: relative;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin-right: 24px;
+}
+
+.checkbox__new {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*center checkmark*/
+    width: 20px;
+    height: 20px;
+    
+    /* cover the old input and add margin at right*/
+    border: 1px solid #ccc;
+    /* unchecked state*/
+    border-radius: 5px;
+}
+
+/* hover effect */
+.checkbox__container:hover .checkbox__new {
+    background-color: #ccc;
+}
+
+/* create chekmark */
+.checkbox__new::after {
+    content: "";
+    display: none;
+    position: absolute;
+    top: 4px;
+    left: 7px;
+    width: 4px;
+    height: 10px;
+    border: solid white;
+    /*checkmark color*/
+    border-width: 0 2px 2px 0;
+
+
+}
+
+.checkbox__input:checked~.checkbox__new {
+    background-color: #2196F3;
+    border-color: #2196F3;
+    
+}
+
+.checkbox__input:checked~.checkbox__new::after {
+    display: block;
+    animation: animate__checkmark 0.3s;
+    transform: translateY(-2px) rotate(45deg);
+}
+
+
+@keyframes animate__checkmark {
+    0% {
+        transform: translateY(10px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-2px) rotate(45deg);
+    }
+}
